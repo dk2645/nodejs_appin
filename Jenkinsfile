@@ -3,8 +3,7 @@ pipeline{
     label 'master'
   }
   environment {
-    project_dir = ""
-    ssh_private_key = "/home/jenkins/.ssh/id_rsa"
+    ssh_private_key = "/home/ubuntu/.ssh/id_rsa"
   }
     stages{
         stage('Build') {
@@ -18,7 +17,7 @@ pipeline{
             steps {
                 script {
                     sh '''
-                    ansible-playbook nodejs_deploy.yml -i /path/hosts --private-key=${ssh_private_key} -e host="all" --ssh-common-args="-o StrictHostKeyChecking=no"
+                    ansible-playbook nodejs_deploy.yml -i ./hosts --private-key=${ssh_private_key} -e host="all" --ssh-common-args="-o StrictHostKeyChecking=no"
                     '''
                 }
             }
