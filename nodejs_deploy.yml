@@ -3,15 +3,11 @@
   hosts: all
   become: true
 
-  tasks:
-  - name: "Checking for app folder"
-    command: mkdir -p /home/ubuntu/nodejs_app
-
   - name: "Copyin files"
-    copy: src=./app_code dest=/home/ubuntu/nodejs_app owner=ubuntu group=admin mode=755
+    copy: src=./app_code dest=/home/ubuntu/ owner=ubuntu group=admin mode=755
 
   - name: "Deploying nodejs app"
-    command: pm2 start /home/ubuntu/nodejs_app/app.js --name 'nodejs app'
+    command: pm2 start /home/ubuntu/app_code/app.js --name 'nodejs app'
     register: deploy
 
   - name: "Deploying"
