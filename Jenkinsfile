@@ -3,7 +3,7 @@ pipeline{
     label 'master'
   }
   environment {
-    ssh_private_key = "/home/jenkins/.ssh/id_rsa"
+    ssh_private_key = "/home/ubuntu/.ssh/id_rsa"
   }
     stages{
         stage('Build') {
