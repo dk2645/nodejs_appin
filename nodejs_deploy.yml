@@ -5,13 +5,13 @@
 
   tasks:
   - name: "Checking for app folder"
-    command: mkdir -p /opt/nodejs_app
+    command: mkdir -p /home/ubuntu/nodejs_app
 
-  - name: "Checking for topic in nodes"
-    copy: src=./ dest=/opt/nodejs_app owner=ubuntu group=admin mode=755
+  - name: "Copyin files"
+    copy: src=./app_code dest=/home/ubuntu/nodejs_app owner=ubuntu group=admin mode=755
 
   - name: "Deploying nodejs app"
-    command: pm2 start /opt/nodejs_app/app.js --name 'nodejs app'
+    command: pm2 start /home/ubuntu/nodejs_app/app.js --name 'nodejs app'
     register: deploy
 
   - name: "Deploying"
