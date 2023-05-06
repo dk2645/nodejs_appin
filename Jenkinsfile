@@ -10,6 +10,7 @@ pipeline{
             steps{
                 sh 'ls'
                 sh 'pwd'
+                sh 'cd /home/ubuntu/app_code'
                 sh 'npm install'
             }
         }
