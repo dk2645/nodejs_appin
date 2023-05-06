@@ -1,1 +1,19 @@
-dkk
+---
+- name: "Node JS Add Deployment"
+  hosts: all
+  become: true
+
+  tasks:
+  - name: "Checking for app folder"
+    command: mkdir -p /opt/nodejs_app
+
+  - name: "Checking for topic in nodes"
+    copy: src=./ dest=/opt/nodejs_app owner=ubuntu group=admin mode=755
+
+  - name: "Deploying nodejs app"
+    command: pm2 start /opt/nodejs_app/app.js --name 'nodejs app'
+    register: deploy
+
+  - name: "Deploying"
+    debug:
+          var: deploy.stdout_lines
