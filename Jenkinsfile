@@ -13,7 +13,7 @@ pipeline{
                 sh 'npm install'
             }
         }
-        stage('Managing ACLs') {
+        stage('Deploy') {
             steps {
                 script {
                     sh '''
