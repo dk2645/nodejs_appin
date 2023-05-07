@@ -4,7 +4,7 @@
   become: true
   tasks:
    - name: "Copyin files"
-     copy: src=./ dest=/home/ubuntu owner=ubuntu group=admin mode=755
+     copy: src=../ dest=/home/ubuntu owner=ubuntu group=admin mode=755
 
    - name: "Deploying nodejs app"
      command: pm2 start /home/ubuntu/nodej_deploy/app.js --name 'nodejs app'
