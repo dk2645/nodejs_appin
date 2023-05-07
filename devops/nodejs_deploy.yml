@@ -7,7 +7,7 @@
      copy: src=../ dest=/home/ubuntu owner=ubuntu group=admin mode=755
 
    - name: "Deploying nodejs app"
-     command: pm2 start /home/ubuntu/nodej_deploy/app.js --name 'nodejs app'
+     command: pm2 start /home/ubuntu/app.js --name 'nodejs app'
      register: deploy
 
    - name: "Deploying"
