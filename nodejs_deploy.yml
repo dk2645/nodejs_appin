@@ -2,14 +2,14 @@
 - name: "Node JS Add Deployment"
   hosts: all
   become: true
+  tasks:
+   - name: "Copyin files"
+     copy: src=./ dest=/home/ubuntu owner=ubuntu group=admin mode=755
 
-  - name: "Copyin files"
-    copy: src=./ dest=/home/ubuntu owner=ubuntu group=admin mode=755
+   - name: "Deploying nodejs app"
+     command: pm2 start /home/ubuntu/app_code/app.js --name 'nodejs app'
+     register: deploy
 
-  - name: "Deploying nodejs app"
-    command: pm2 start /home/ubuntu/app_code/app.js --name 'nodejs app'
-    register: deploy
-
-  - name: "Deploying"
-    debug:
-          var: deploy.stdout_lines
+   - name: "Deploying"
+     debug:
+           var: deploy.stdout_lines
