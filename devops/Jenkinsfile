@@ -10,7 +10,6 @@ pipeline{
             steps{
                 sh 'ls'
                 sh 'pwd'
-                sh 'cd app_code'
                 sh 'npm install'
             }
         }
@@ -18,7 +17,7 @@ pipeline{
             steps {
                 script {
                     sh '''
-                    ansible-playbook nodejs_deploy.yml -i ./hosts --private-key=${ssh_private_key} -e host="all" --ssh-common-args="-o StrictHostKeyChecking=no"
+                    ansible-playbook devops/nodejs_deploy.yml -i devops/hosts --private-key=${ssh_private_key} -e host="all" --ssh-common-args="-o StrictHostKeyChecking=no"
                     '''
                 }
             }
