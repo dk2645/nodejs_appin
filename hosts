@@ -1,4 +1,4 @@
 [all:vars]
 ansible_ssh_user=ubuntu
 [webserver]
-deployment_server ansible_ssh_host=52.66.235.20 
+deployment_server ansible_ssh_host=3.110.222.46 
